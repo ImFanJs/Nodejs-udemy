@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ImFanJs/Nodejs-udemy#readme",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "yargs": "^9.0.1"
   }
 }
