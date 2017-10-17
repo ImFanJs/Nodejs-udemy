@@ -9,14 +9,21 @@ const notes = require('./notes.js');
 const argv = yargs.argv;
 const command = argv._[0];
 console.log('Command', command);
-console.log(argv);
 
 switch(command) {
     case 'add':
-        notes.addNote(argv.title, argv.body);
+        const note = notes.addNote(argv.title, argv.body);
+        if(note) {
+            console.log('Note created!');
+            console.log('---');
+            console.log(`Title: ${note.title}`);
+            console.log(`Body: ${note.body}`);
+        } else {
+            console.log('Title taken.');
+        }
         break;
     case 'list':
-        notes.getAll();
+        console.log(notes.getAll());
         break;
     case 'read':
         notes.readNote(argv.id);
