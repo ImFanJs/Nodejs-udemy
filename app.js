@@ -12,7 +12,7 @@ console.log('Command', command);
 
 switch(command) {
     case 'add':
-        const note = notes.addNote(argv.title, argv.body);
+        var note = notes.addNote(argv.title, argv.body);
         if(note) {
             console.log('Note created!');
             console.log('---');
@@ -26,10 +26,19 @@ switch(command) {
         console.log(notes.getAll());
         break;
     case 'read':
-        notes.readNote(argv.id);
+        var noteToRead = notes.readNote(argv.title);
+        if(noteToRead) {
+            console.log('---');
+            console.log(`Title: ${noteToRead.title}`);
+            console.log(`Body: ${noteToRead.body}`);
+        } else {
+            console.log('Note not found.');
+        }
         break;
     case 'remove':
-        notes.removeNote(argv.id);
+        var noteRemoved = notes.removeNote(argv.title);
+        var message = noteRemoved ? 'Note was removed' : 'Note not found';
+        console.log(message);
         break;
     default:
         console.log('Not command found');
